@@ -18,15 +18,23 @@ jobs:
         auto-update-conda: true
         python-version: 3.12
         activate-environment: calender_bot
+        environment-file: environment.yml
+        auto-activate-base: false
 
     - name: Conda info
       shell: bash -l {0}
       run: conda info
 
-    - name: Create environment manually
+    - name: Update environment if it exists, create if it doesn't
       shell: bash -l {0}
       run: |
-        conda env create -f environment.yml --name calender_bot --verbose
+        if conda env list | grep -q calender_bot; then
+          echo "Updating existing environment"
+          conda env update --name calender_bot --file environment.yml --prune
+        else
+          echo "Creating new environment"
+          conda env create -f environment.yml
+        fi
 
     - name: Activate environment
       shell: bash -l {0}

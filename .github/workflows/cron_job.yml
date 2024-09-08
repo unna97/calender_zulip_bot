@@ -35,7 +35,7 @@ jobs:
       with:
         envkey_ICAL_URL: ${{ secrets.ICAL_URL }}
         envkey_ZULIP_API_KEY: ${{ secrets.ZULIP_API_KEY }}
-        envkey_ZULIP_EMAIL: ${{ secrets.ZULIP_EMAIL }}
+        envkey_ZULIP_BOT_EMAIL: ${{ secrets.ZULIP_BOT_EMAIL }}
         envkey_ZULIP_SITE: ${{ secrets.ZULIP_SITE }}
         file_name: .env
         fail_on_empty: true

@@ -16,7 +16,7 @@ jobs:
       with:
         python-version: 3.12
     
-    - uses: conda-incubator/setup-miniconda@v2
+    - uses: conda-incubator/setup-miniconda@v3
       with:
         activate-environment: calender_bot
         environment-file: environment.yml

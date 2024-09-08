@@ -17,7 +17,7 @@ ICAL_URL = os.getenv("ICAL_URL")
 ZULIP_EMAIL = os.getenv("ZULIP_BOT_EMAIL")
 ZULIP_API_KEY = os.getenv("ZULIP_API_KEY")
 ZULIP_SITE = os.getenv("ZULIP_SITE")
-CHANNEL = "sandbox"
+CHANNEL = os.getenv("ZULIP_CHANNEL")
 # Number of days to check for updated events, default is 1 due to the bot running daily
 TIMEDELTA_DAYS = 1
 

@@ -15,12 +15,23 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.12
+  
+    - name: Update conda
+      run: conda update -n base -c defaults conda
     
     - uses: conda-incubator/setup-miniconda@v3
       with:
         activate-environment: calender_bot
         environment-file: environment.yml
         auto-activate-base: false
+    
+    - name: Conda info
+      shell: bash -l {0}
+      run: conda info
+
+    - name: Conda list
+      shell: bash -l {0}
+      run: conda list
 
     # - name: Create .env file
     #   uses: SpicyPizza/create-envfile@v2.0

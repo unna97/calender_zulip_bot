@@ -3,59 +3,58 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - aiofiles=23.2.1=pyhd8ed1ab_0
-  - aiohttp=3.9.5=py312h2bbff1b_0
-  - aiohttp-socks=0.7.1=pyhd8ed1ab_0
-  - aiosignal=1.2.0=pyhd3eb1b0_0
-  - async-timeout=4.0.3=py312haa95532_0
-  - attrs=23.1.0=py312haa95532_0
-  - brotli-python=1.0.9=py312hd77b12b_8
+  - aiofiles=23.2.1
+  - aiohttp=3.9.5
+  - aiohttp-socks=0.7.1
+  - aiosignal=1.2.0
+  - async-timeout=4.0.3
+  - attrs=23.1.0
+  - brotli-python=1.0.9
   - bzip2=1.0.8=h2bbff1b_6
   - ca-certificates=2024.7.2=haa95532_0
-  - certifi=2024.7.4=py312haa95532_0
-  - charset-normalizer=3.3.2=pyhd3eb1b0_0
-  - click=8.1.7=py312haa95532_0
-  - colorama=0.4.6=py312haa95532_0
-  - distro=1.9.0=py312haa95532_0
+  - certifi=2024.7.4
+  - charset-normalizer=3.3.2
+  - click=8.1.7
+  - colorama=0.4.6
+  - distro=1.9.0
   - expat=2.6.2=hd77b12b_0
-  - frozenlist=1.4.0=py312h2bbff1b_0
-  - h11=0.14.0=py312haa95532_0
+  - frozenlist=1.4.0
+  - h11=0.14.0
   - h2=4.0.0=py312haa95532_3
   - hpack=4.0.0=py_0
-  - hyperframe=6.0.1=pyhd3eb1b0_0
-  - icalendar=5.0.13=pyhd8ed1ab_0
-  - idna=3.7=py312haa95532_0
-  - jsonschema=4.19.2=py312haa95532_0
-  - jsonschema-specifications=2023.7.1=py312haa95532_0
+  - hyperframe=6.0.1
+  - icalendar=5.0.13
+  - idna=3.7
+  - jsonschema=4.19.2
+  - jsonschema-specifications=2023.7.1
   - libffi=3.4.4=hd77b12b_1
-  - matrix-nio=0.23.0=pyhd8ed1ab_0
-  - multidict=6.0.4=py312h2bbff1b_0
+  - matrix-nio=0.23.0
+  - multidict=6.0.4
   - openssl=3.0.14=h827c3e9_0
-  - pip=24.2=py312haa95532_0
-  - pycryptodome=3.20.0=py312h827c3e9_0
-  - pysocks=1.7.1=py312haa95532_0
-  - python=3.12.4=h14ffc60_1
-  - python-dateutil=2.9.0post0=py312haa95532_2
-  - python-dotenv=1.0.1=pyhd8ed1ab_0
-  - python-socks=2.5.1=pyhd8ed1ab_0
-  - pytz=2024.1=py312haa95532_0
-  - referencing=0.30.2=py312haa95532_0
-  - requests=2.32.3=py312haa95532_0
+  - pip=24.2
+  - pycryptodome=3.20.0
+  - pysocks=1.7.1
+  - python=3.12.4
+  - python-dateutil=2.9.0post0
+  - python-dotenv=1.0.1
+  - python-socks=2.5.1
+  - pytz=2024.1
+  - referencing=0.30.2
+  - requests=2.32.3
   - rpds-py=0.10.6=py312h062c2fa_0
-  - setuptools=72.1.0=py312haa95532_0
+  - setuptools=72.1.0
   - six=1.16.0=pyhd3eb1b0_1
   - sqlite=3.45.3=h2bbff1b_0
   - tk=8.6.14=h0416ee5_0
-  - typing-extensions=4.11.0=py312haa95532_0
-  - typing_extensions=4.11.0=py312haa95532_0
+  - typing-extensions=4.11.0
+  - typing_extensions=4.11.0
   - tzdata=2024a=h04d1e81_0
-  - unpaddedbase64=2.1.0=pyhd8ed1ab_0
-  - urllib3=2.2.2=py312haa95532_0
+  - unpaddedbase64=2.1.0
+  - urllib3=2.2.2
   - vc=14.40=h2eaa2aa_0
   - vs2015_runtime=14.40.33807=h98bb1dd_0
-  - wheel=0.43.0=py312haa95532_0
-  - win_inet_pton=1.1.0=py312haa95532_0
+  - wheel=0.43.0
+  - win_inet_pton=1.1.0
   - xz=5.4.6=h8cc25b3_1
-  - yarl=1.9.3=py312h2bbff1b_0
-  - zlib=1.2.13=h8cc25b3_1
-  - zulip=0.9.0=pyhd8ed1ab_0
+  - yarl=1.9.3
+  - zulip=0.9.0

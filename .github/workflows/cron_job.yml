@@ -20,13 +20,16 @@ jobs:
       with:
         activate-environment: calender_bot
         environment-file: environment.yml
+        auto-activate-base: false
+
+
           
-    - name: Install dependencies with anaconda
-      run: |
-        conda env create -f environment.yml
-        conda activate calender_bot
+    # - name: Install dependencies with anaconda
+    #   run: |
+    #     conda env create -f environment.yml
+    #     conda activate calender_bot
     
-    # - name: Create .env file
+    # # - name: Create .env file
     #   uses: SpicyPizza/create-envfile@v2.0
     #   with:
     #     envkey_ICAL_URL: ${{ secrets.ICAL_URL }}

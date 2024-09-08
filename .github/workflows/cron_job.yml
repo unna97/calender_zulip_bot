@@ -34,8 +34,9 @@ jobs:
       run: |
         echo "ICAL_URL=${{ secrets.ICAL_URL }}" >> .env
         echo "ZULIP_API_KEY=${{ secrets.ZULIP_API_KEY }}" >> .env
-        echo "ZULIP_EMAIL=${{ secrets.ZULIP_EMAIL }}" >> .env
+        echo "ZULIP_BOT_EMAIL=${{ secrets.ZULIP_BOT_EMAIL }}" >> .env
         echo "ZULIP_SITE=${{ secrets.ZULIP_SITE }}" >> .env
+        echo "ZULIP_CHANNEL=${{ secrets.ZULIP_CHANNEL }}" >> .env
       shell: bash
     
     - name: Run the bot

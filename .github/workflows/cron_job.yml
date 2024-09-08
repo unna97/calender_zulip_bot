@@ -22,19 +22,18 @@ jobs:
         environment-file: environment.yml
         auto-activate-base: false
 
-
-          
-    # - name: Install dependencies with anaconda
-    #   run: |
-    #     conda env create -f environment.yml
-    #     conda activate calender_bot
+    - name: Create .env file
+      uses: SpicyPizza/create-envfile@v2.0
+      with:
+        envkey_ICAL_URL: ${{ secrets.ICAL_URL }}
+        envkey_ZULIP_API_KEY: ${{ secrets.ZULIP_API_KEY }}
+        envkey_ZULIP_EMAIL: ${{ secrets.ZULIP_EMAIL }}
+        envkey_ZULIP_SITE: ${{ secrets.ZULIP_SITE }}
+        file_name: .env
+        fail_on_empty: true
     
-    # # - name: Create .env file
-    #   uses: SpicyPizza/create-envfile@v2.0
-    #   with:
-    #     envkey_ICAL_URL: ${{ secrets.ICAL_URL }}
-    #     envkey_ZULIP_API_KEY: ${{ secrets.ZULIP_API_KEY }}
-    #     envkey_ZULIP_EMAIL: ${{ secrets.ZULIP_EMAIL }}
-    #     envkey_ZULIP_SITE: ${{ secrets.ZULIP_SITE }}
-    #     file_name: .env
-    #     fail_on_empty: true
+    - name: Run the bot
+      run: |
+        conda activate calender_bot
+        python bot.py
+    

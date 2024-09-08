@@ -3,45 +3,14 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - python=3.12.*
-  - aiofiles=23.2.1
-  - aiohttp=3.9.5
-  - aiohttp-socks=0.7.1
-  - aiosignal=1.2.0
-  - async-timeout=4.0.3
-  - attrs=23.1.0
-  - brotli-python=1.0.9
-  - certifi=2024.7.4
-  - charset-normalizer=3.3.2
-  - click=8.1.7
-  - colorama=0.4.6
-  - distro=1.9.0
-  - frozenlist=1.4.0
-  - h11=0.14.0
-  - h2=4.0.0
-  - hpack=4.0.0
-  - hyperframe=6.0.1
-  - icalendar=5.0.13
-  - idna=3.7
-  - jsonschema=4.19.2
-  - jsonschema-specifications=2023.7.1
-  - matrix-nio=0.23.0
-  - multidict=6.0.4
-  - pycryptodome=3.20.0
-  - pysocks=1.7.1
-  - python-dateutil=2.9.0post0
-  - python-dotenv=1.0.1
-  - python-socks=2.5.1
-  - pytz=2024.1
-  - referencing=0.30.2
-  - requests=2.32.3
-  - rpds-py=0.10.6
-  - six=1.16.0
-  - typing_extensions=4.11.0
-  - unpaddedbase64=2.1.0
-  - urllib3=2.2.2
-  - win_inet_pton=1.1.0
-  - yarl=1.9.3
+  - python=3.12
   - pip
   - pip:
+    - aiofiles==23.2.1
+    - aiohttp==3.9.5
+    - aiohttp-socks==0.7.1
+    - icalendar==5.0.13
+    - matrix-nio==0.23.0
+    - python-dotenv==1.0.1
+    - requests==2.32.3
     - zulip==0.9.0

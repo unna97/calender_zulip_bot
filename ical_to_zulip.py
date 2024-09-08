@@ -17,6 +17,9 @@ ICAL_URL = os.getenv("ICAL_URL")
 ZULIP_EMAIL = os.getenv("ZULIP_BOT_EMAIL")
 ZULIP_API_KEY = os.getenv("ZULIP_API_KEY")
 ZULIP_SITE = os.getenv("ZULIP_SITE")
+CHANNEL = "sandbox"
+# Number of days to check for updated events, default is 1 due to the bot running daily
+TIMEDELTA_DAYS = 1
 
 
 class ICalToZulipBot:
@@ -39,7 +42,7 @@ class ICalToZulipBot:
     def event_to_message(self, event):
         message = {
             "type": "stream",
-            "to": "Calender Bot Stuff",
+            "to": CHANNEL,
             "subject": event["summary"],
         }
         if event["description"] is None:
@@ -56,7 +59,7 @@ class ICalToZulipBot:
     def daily_events_message(self, events):
         message = {
             "type": "stream",
-            "to": "Calender Bot Stuff",
+            "to": CHANNEL,
             "subject": "Daily Events",
         }
         message["content"] = f"""/poll today's events:"""
@@ -69,11 +72,12 @@ class ICalToZulipBot:
         events = self.fetch_calendar_events()
         events = sorted(events, key=lambda x: x["start"])
 
-        TIMEDELTA_DAYS = 1
         NOW = datetime.now(dt.UTC)
+
         UPDATED_EVENTS_FILTER = lambda x: x.get("last_modified").dt > (
             NOW - timedelta(days=TIMEDELTA_DAYS)
         ) or x.get("created").dt > (NOW - timedelta(days=TIMEDELTA_DAYS))
+
         updated_events = filter(UPDATED_EVENTS_FILTER, events)
 
         for event in updated_events:

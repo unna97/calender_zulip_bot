@@ -41,7 +41,7 @@ jobs:
     - name: Run the bot
       run: |
         source $HOME/miniconda/bin/activate calender_bot
-        python bot.py
+        python ical_to_zulip.py
     
     - name: Clean up .env file
       if: always()

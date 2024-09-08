@@ -13,36 +13,22 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Set up Miniconda
-      uses: conda-incubator/setup-miniconda@v3
-      with:
-        auto-update-conda: true
-        python-version: 3.12
-        activate-environment: calender_bot
-        environment-file: environment.yml
-        auto-activate-base: false
-
-    - name: Conda info
-      shell: bash -l {0}
-      run: conda info
-
-    - name: Update environment if it exists, create if it doesn't
-      shell: bash -l {0}
       run: |
-        if conda env list | grep -q calender_bot; then
-          echo "Updating existing environment"
-          conda env update --name calender_bot --file environment.yml --prune
-        else
-          echo "Creating new environment"
-          conda env create -f environment.yml
-        fi
+        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+        bash miniconda.sh -b -p $HOME/miniconda
+        source $HOME/miniconda/bin/activate
+        conda init bash
+        conda config --set always_yes yes --set changeps1 no
 
-    - name: Activate environment
-      shell: bash -l {0}
-      run: conda activate calender_bot
-
-    - name: Conda list
-      shell: bash -l {0}
-      run: conda list
+    - name: Create Conda environment
+      run: |
+        source $HOME/miniconda/bin/activate
+        conda env create -f environment.yml
+      
+    - name: Activate environment and install dependencies
+      run: |
+        source $HOME/miniconda/bin/activate calender_bot
+        conda list
 
     - name: Create .env file
       uses: SpicyPizza/create-envfile@v2.0
@@ -55,7 +41,6 @@ jobs:
         fail_on_empty: true
     
     - name: Run the bot
-      shell: bash -l {0}
       run: |
-        conda activate calender_bot
+        source $HOME/miniconda/bin/activate calender_bot
         python bot.py

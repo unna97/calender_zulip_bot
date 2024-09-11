@@ -5,6 +5,7 @@ import datetime as dt
 from datetime import datetime, timedelta
 from zulip import Client
 from dotenv import load_dotenv
+from dateutil import rrule
 
 
 IMPORTANT_COMPONENTS = ["SUMMARY", "DTSTART", "DTEND", "LOCATION", "DESCRIPTION"]
@@ -76,7 +77,8 @@ class ICalToZulipBot:
 
         UPDATED_EVENTS_FILTER = lambda x: x.get("last_modified").dt > (
             NOW - timedelta(days=TIMEDELTA_DAYS)
-        ) or x.get("created").dt > (NOW - timedelta(days=TIMEDELTA_DAYS))
+        ) or x.get("created").dt > (NOW - timedelta(days=TIMEDELTA_DAYS)
+        or x.get("start").dt < (NOW + timedelta(days=1)))
 
         updated_events = filter(UPDATED_EVENTS_FILTER, events)
 
@@ -102,11 +104,30 @@ class ICalToZulipBot:
         cal = Calendar.from_ical(response.text)
 
         events = []
+        now = datetime.now(dt.UTC)
+        end_date = now + timedelta(days=TIMEDELTA_DAYS)
 
         for component in cal.walk():
             if component.name == "VEVENT":
                 event = self.component_to_event(component)
-                events.append(event)
+                
+                if component.get('RRULE'):
+                    # Handle recurring events
+                    recur_rule = component.get('RRULE')
+                    dtstart = component.get('DTSTART').dt
+                    
+                    # Get all occurrences of the event within the specified time range
+                    occurrences = list(rrule.rrulestr(recur_rule.to_ical().decode('utf-8'), dtstart=dtstart)
+                                       .between(now, end_date, inc=True))
+                    
+                    for occurrence in occurrences:
+                        recurring_event = event.copy()
+                        recurring_event['start'] = occurrence.strftime("%Y-%m-%dT%H:%M:%S%z")
+                        recurring_event['end'] = (occurrence + (component.get('DTEND').dt - component.get('DTSTART').dt)).strftime("%Y-%m-%dT%H:%M:%S%z")
+                        events.append(recurring_event)
+                else:
+                    # Non-recurring event
+                    events.append(event)
 
         return events
 
